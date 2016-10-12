@@ -9,6 +9,7 @@ namespace Numbers2Words
 {
     public class Georgian
     {
+
         public string BanknoteName { get; set; }
         public string CoinString { get; set; }
         public Georgian(string banknoteName, string coinString)
@@ -26,7 +27,6 @@ namespace Numbers2Words
 
             return PrintString(Banknote) + " " + BanknoteName + " da " + PrintString(coin) + " " + CoinString;
         }
-
 
         private string TwoDigitHelper(int t)
         {
@@ -59,7 +59,7 @@ namespace Numbers2Words
                 default: return null;
             }
         }
-
+        //221
         private string TwoDigit(int t)
         {
             if (t == 20 || t == 40 || t == 60 || t == 80)

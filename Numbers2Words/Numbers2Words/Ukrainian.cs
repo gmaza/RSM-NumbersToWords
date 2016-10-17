@@ -1,38 +1,27 @@
 ﻿using Noesis.Javascript;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Numbers2Words
 {
-    class Ukrainian
+    public class Ukrainian
     {
-        public void js()
+        public string Convert(decimal money)
         {
+            var result = string.Empty;
             using (JavascriptContext context = new JavascriptContext())
             {
-
-                // Setting external parameters for the context
-              
-                context.SetParameter("message", "Hello World !");
-                context.SetParameter("number", 1);
-
-                // Script
-                string script = @"
-        var i;
-        for (i = 0; i < 5; i++)
-          
-        number += i;
-    ";
-
-                // Running the script
+                context.SetParameter("nnn", money.ToString());
+                string script = File.ReadAllText(@"numbersToUkrainian.js");
                 context.Run(script);
 
-                // Getting a parameter
-                Console.WriteLine("number: " + context.GetParameter("number"));
+                result = context.GetParameter("result").ToString();                        
             }
+            return result;
         }
     }
 }

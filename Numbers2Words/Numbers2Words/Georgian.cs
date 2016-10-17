@@ -32,30 +32,30 @@ namespace Numbers2Words
         {
             switch (t)
             {
-                case 0: return ("nuli");
-                case 1: return ("erti");
-                case 2: return ("ori");
-                case 3: return ("sami");
-                case 4: return ("otxi");
-                case 5: return ("xuti");
-                case 6: return ("eqvsi");
-                case 7: return ("shvidi");
-                case 8: return ("rva");
-                case 9: return ("cxra");
-                case 10: return ("ati");
-                case 11: return ("tertmeti");
-                case 12: return ("tormeti");
-                case 13: return ("cameti");
-                case 14: return ("totxmeti");
-                case 15: return ("txutmeti");
-                case 16: return ("teqvsmeti");
-                case 17: return ("chvidmeti");
-                case 18: return ("tvrameti");
-                case 19: return ("cxrameti");
-                case 20: return ("oci");
-                case 40: return ("ormoci");
-                case 60: return ("samoci");
-                case 80: return ("otxmoci");
+                case 0: return ("ნული");
+                case 1: return ("ერთი");
+                case 2: return ("ორი");
+                case 3: return ("სამი");
+                case 4: return ("ოთხი");
+                case 5: return ("ხუთი");
+                case 6: return ("ექვსი");
+                case 7: return ("შვიდი");
+                case 8: return ("რვა");
+                case 9: return ("ცხრა");
+                case 10: return ("ათი");
+                case 11: return ("თერთმეტი");
+                case 12: return ("თორმეტი");
+                case 13: return ("ცამეტი");
+                case 14: return ("თოთხმეტი");
+                case 15: return ("თხუტმეტი");
+                case 16: return ("თექვსმეტი");
+                case 17: return ("ჩვიდმეტი");
+                case 18: return ("თვრამეტი");
+                case 19: return ("ცხრამეტი");
+                case 20: return ("oცი");
+                case 40: return ("ორმოცი");
+                case 60: return ("სამოცი");
+                case 80: return ("ოთხმოცი");
                 default: return null;
             }
         }
@@ -69,10 +69,10 @@ namespace Numbers2Words
 
             switch (t / 20)
             {
-                case 1: return "ocda" + TwoDigitHelper(t % 20);
-                case 2: return "ormocda" + TwoDigitHelper(t % 20);
-                case 3: return "samocda" + TwoDigitHelper(t % 20);
-                case 4: return "otxmocda" + TwoDigitHelper(t % 20);
+                case 1: return "ოცდა" + TwoDigitHelper(t % 20);
+                case 2: return "ორმოცდა" + TwoDigitHelper(t % 20);
+                case 3: return "სამოცდა" + TwoDigitHelper(t % 20);
+                case 4: return "ოთხმოცდა" + TwoDigitHelper(t % 20);
                 default:
                     break;
             }
@@ -83,7 +83,7 @@ namespace Numbers2Words
         private string ThreeDigit(int t)
         {
             if (t < 100) return (TwoDigit(t));
-            string rv = "as";
+            string rv = "ას";
             int dig = t / 100;
             if (dig > 1)
             {
@@ -98,7 +98,7 @@ namespace Numbers2Words
 
             }
             string tmp = TwoDigit(t % 100);
-            if (tmp == "nuli") return rv + "i";
+            if (tmp == "ნული") return rv + "i";
             return (rv + " " + tmp);
         }
 
@@ -107,7 +107,7 @@ namespace Numbers2Words
             string rv = "";
             if (t < 0)
             {
-                rv += "minus ";
+                rv += "მინუს ";
                 t = 0 - t;
             }
             string bil = ThreeDigit(t / 1000000000);
@@ -118,29 +118,29 @@ namespace Numbers2Words
             t = t % 1000;
             string dg = ThreeDigit(t);
 
-            if (bil != "nuli")
+            if (bil != "ნული")
             {
-                if (bil != "erti")
+                if (bil != "ერთი")
                     rv += bil + " ";
-                rv += "miliard ";
+                rv += "მილიარდ ";
             }
-            if (mil != "nuli")
+            if (mil != "ნული")
             {
-                if (mil != "erti")
+                if (mil != "ერთი")
                     rv += mil + " ";
-                rv += "milion ";
+                rv += "მილიონ ";
             }
-            if (tho != "nuli")
+            if (tho != "ნული")
             {
-                if (tho != "erti")
+                if (tho != "ერთი")
                     rv += tho + " ";
-                rv += "atas ";
+                rv += "ათას ";
             }
-            if (dg != "nuli")
+            if (dg != "ნული")
                 rv += dg;
-            if (dg == "nuli" && rv != "nuli" && rv != "")
+            if (dg == "ნული" && rv != "ნული" && rv != "")
                 rv = rv.Substring(0, rv.Length - 1) + "i";
-            if (rv == "") rv = "nuli";
+            if (rv == "") rv = "ნული";
             return rv;
         }
     }
